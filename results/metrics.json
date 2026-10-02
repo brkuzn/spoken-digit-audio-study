@@ -1,0 +1,150 @@
+{
+  "dataset": {
+    "source": "https://codeload.github.com/Jakobovski/free-spoken-digit-dataset/zip/d6938f9bf1545aa66d8489fc9f1385a7abd64282",
+    "commit": "d6938f9bf1545aa66d8489fc9f1385a7abd64282",
+    "tag": "v1.0.10",
+    "archive_sha256": "0d768862a67744adaa5aa2dc5ca04520dde6e64d6f124eccec882ad739ae655f",
+    "license": "CC-BY-SA-4.0"
+  },
+  "n_recordings": 3000,
+  "speakers": [
+    "george",
+    "jackson",
+    "lucas",
+    "nicolas",
+    "theo",
+    "yweweler"
+  ],
+  "seed": 42,
+  "method": "79 features: MFCC 1-13 and differences, mean/std; duration. StandardScaler + RBF SVC C=10.",
+  "versions": {
+    "python": "3.12.4",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "scikit_learn": "1.6.1",
+    "matplotlib": "3.8.0"
+  },
+  "recording_split_known_speakers": {
+    "accuracy": 0.9633333333333334,
+    "macro_f1": 0.9634692558283104
+  },
+  "leave_one_speaker_out": {
+    "clean": {
+      "accuracy": 0.705,
+      "macro_f1": 0.7063648715027225
+    },
+    "10dB": {
+      "accuracy": 0.473,
+      "macro_f1": 0.464365240408148
+    },
+    "0dB": {
+      "accuracy": 0.221,
+      "macro_f1": 0.17448095391569318
+    }
+  },
+  "folds": [
+    {
+      "held_out_speaker": "george",
+      "n_train": 2500,
+      "n_test": 500,
+      "clean": {
+        "accuracy": 0.642,
+        "macro_f1": 0.6410651627534313
+      },
+      "10dB": {
+        "accuracy": 0.49,
+        "macro_f1": 0.46067887221193615
+      },
+      "0dB": {
+        "accuracy": 0.204,
+        "macro_f1": 0.15462801923300842
+      }
+    },
+    {
+      "held_out_speaker": "jackson",
+      "n_train": 2500,
+      "n_test": 500,
+      "clean": {
+        "accuracy": 0.748,
+        "macro_f1": 0.7309639899074964
+      },
+      "10dB": {
+        "accuracy": 0.544,
+        "macro_f1": 0.53146487458164
+      },
+      "0dB": {
+        "accuracy": 0.19,
+        "macro_f1": 0.12261070123104063
+      }
+    },
+    {
+      "held_out_speaker": "lucas",
+      "n_train": 2500,
+      "n_test": 500,
+      "clean": {
+        "accuracy": 0.692,
+        "macro_f1": 0.692005975584989
+      },
+      "10dB": {
+        "accuracy": 0.306,
+        "macro_f1": 0.22444260232794244
+      },
+      "0dB": {
+        "accuracy": 0.176,
+        "macro_f1": 0.11626788558387388
+      }
+    },
+    {
+      "held_out_speaker": "nicolas",
+      "n_train": 2500,
+      "n_test": 500,
+      "clean": {
+        "accuracy": 0.566,
+        "macro_f1": 0.5582571060379622
+      },
+      "10dB": {
+        "accuracy": 0.336,
+        "macro_f1": 0.2842443859807463
+      },
+      "0dB": {
+        "accuracy": 0.198,
+        "macro_f1": 0.1254469363804021
+      }
+    },
+    {
+      "held_out_speaker": "theo",
+      "n_train": 2500,
+      "n_test": 500,
+      "clean": {
+        "accuracy": 0.84,
+        "macro_f1": 0.8434104789196628
+      },
+      "10dB": {
+        "accuracy": 0.55,
+        "macro_f1": 0.543645404564978
+      },
+      "0dB": {
+        "accuracy": 0.226,
+        "macro_f1": 0.183466291042444
+      }
+    },
+    {
+      "held_out_speaker": "yweweler",
+      "n_train": 2500,
+      "n_test": 500,
+      "clean": {
+        "accuracy": 0.742,
+        "macro_f1": 0.7276840154805079
+      },
+      "10dB": {
+        "accuracy": 0.612,
+        "macro_f1": 0.5943115934966037
+      },
+      "0dB": {
+        "accuracy": 0.332,
+        "macro_f1": 0.29126738165909155
+      }
+    }
+  ],
+  "noise_note": "Training uses clean audio only. Test noise is synthetic Gaussian noise; not caf\u00e9 noise."
+}

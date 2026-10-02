@@ -1,0 +1,10 @@
+data/
+.venv/
+__pycache__/
+.DS_Store
+results/sequence-features.npz
+results/sequence-features-manifest.json
+results/comparison-progress.json
+
+# Personal learning notes stay local.
+ANLAMA-REHBERI.md

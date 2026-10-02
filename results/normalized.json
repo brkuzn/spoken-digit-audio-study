@@ -1,0 +1,186 @@
+{
+  "n_recordings": 3000,
+  "dataset_commit": "d6938f9bf1545aa66d8489fc9f1385a7abd64282",
+  "method": "13 MFCCs at32 ordered times, coefficient mean/std normalisation within each frame; fold-local StandardScaler + RBF SVC. C in[1,10,100], selected by inner leave-one-speaker-out validation.",
+  "source": "https://github.com/aniruddhapal211316/spoken_digit_recognition/blob/147f43538a075a728690ece8fe6e1e268188b24b/dataset.py",
+  "source_note": "Independent implementation inspired by framewise coefficient standardisation; source uses39 coefficients and BiLSTM. Here13 coefficients, interpolation and an SVC are used.",
+  "training": "Clean clips only; no noise augmentation.",
+  "development_note": "Exploratory follow-up. Frame normalisation was tried after inspecting other models on this same dataset; outer results are reused descriptive development evidence, not an untouched final evaluation. C selection does not use outer test speakers.",
+  "recording_split_known_speakers": {
+    "accuracy": 0.99,
+    "macro_f1": 0.9900501035233802
+  },
+  "known_split_C": 10,
+  "leave_one_speaker_out": {
+    "clean": {
+      "accuracy": 0.8233333333333334,
+      "macro_f1": 0.825839953079513
+    },
+    "10dB": {
+      "accuracy": 0.313,
+      "macro_f1": 0.2888503148963148
+    },
+    "0dB": {
+      "accuracy": 0.14666666666666667,
+      "macro_f1": 0.07688718093115424
+    }
+  },
+  "folds": [
+    {
+      "held_out_speaker": "george",
+      "train_speakers": [
+        "jackson",
+        "lucas",
+        "nicolas",
+        "theo",
+        "yweweler"
+      ],
+      "n_train": 2500,
+      "n_test": 500,
+      "C": 1,
+      "inner_accuracy": 0.8540000000000001,
+      "clean": {
+        "accuracy": 0.606,
+        "macro_f1": 0.6014869962377627
+      },
+      "10dB": {
+        "accuracy": 0.166,
+        "macro_f1": 0.07853641456582633
+      },
+      "0dB": {
+        "accuracy": 0.118,
+        "macro_f1": 0.04806107241704431
+      }
+    },
+    {
+      "held_out_speaker": "jackson",
+      "train_speakers": [
+        "george",
+        "lucas",
+        "nicolas",
+        "theo",
+        "yweweler"
+      ],
+      "n_train": 2500,
+      "n_test": 500,
+      "C": 1,
+      "inner_accuracy": 0.7796,
+      "clean": {
+        "accuracy": 0.948,
+        "macro_f1": 0.9474198140695277
+      },
+      "10dB": {
+        "accuracy": 0.394,
+        "macro_f1": 0.36523567971751253
+      },
+      "0dB": {
+        "accuracy": 0.178,
+        "macro_f1": 0.1072099210624684
+      }
+    },
+    {
+      "held_out_speaker": "lucas",
+      "train_speakers": [
+        "george",
+        "jackson",
+        "nicolas",
+        "theo",
+        "yweweler"
+      ],
+      "n_train": 2500,
+      "n_test": 500,
+      "C": 10,
+      "inner_accuracy": 0.8308,
+      "clean": {
+        "accuracy": 0.756,
+        "macro_f1": 0.7500751580571992
+      },
+      "10dB": {
+        "accuracy": 0.184,
+        "macro_f1": 0.09165347836747431
+      },
+      "0dB": {
+        "accuracy": 0.106,
+        "macro_f1": 0.02795736099106886
+      }
+    },
+    {
+      "held_out_speaker": "nicolas",
+      "train_speakers": [
+        "george",
+        "jackson",
+        "lucas",
+        "theo",
+        "yweweler"
+      ],
+      "n_train": 2500,
+      "n_test": 500,
+      "C": 1,
+      "inner_accuracy": 0.8216000000000001,
+      "clean": {
+        "accuracy": 0.746,
+        "macro_f1": 0.7432922610448983
+      },
+      "10dB": {
+        "accuracy": 0.282,
+        "macro_f1": 0.22129751418591134
+      },
+      "0dB": {
+        "accuracy": 0.168,
+        "macro_f1": 0.09067460317460317
+      }
+    },
+    {
+      "held_out_speaker": "theo",
+      "train_speakers": [
+        "george",
+        "jackson",
+        "lucas",
+        "nicolas",
+        "yweweler"
+      ],
+      "n_train": 2500,
+      "n_test": 500,
+      "C": 10,
+      "inner_accuracy": 0.7368,
+      "clean": {
+        "accuracy": 0.964,
+        "macro_f1": 0.9645447136936285
+      },
+      "10dB": {
+        "accuracy": 0.47,
+        "macro_f1": 0.45534012593153345
+      },
+      "0dB": {
+        "accuracy": 0.196,
+        "macro_f1": 0.11599999999999999
+      }
+    },
+    {
+      "held_out_speaker": "yweweler",
+      "train_speakers": [
+        "george",
+        "jackson",
+        "lucas",
+        "nicolas",
+        "theo"
+      ],
+      "n_train": 2500,
+      "n_test": 500,
+      "C": 10,
+      "inner_accuracy": 0.7552,
+      "clean": {
+        "accuracy": 0.92,
+        "macro_f1": 0.9178924741174137
+      },
+      "10dB": {
+        "accuracy": 0.382,
+        "macro_f1": 0.3495191889381352
+      },
+      "0dB": {
+        "accuracy": 0.114,
+        "macro_f1": 0.037714285714285714
+      }
+    }
+  ]
+}

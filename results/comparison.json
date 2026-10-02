@@ -1,0 +1,329 @@
+{
+  "baseline_source": "metrics.json",
+  "dataset_commit": "d6938f9bf1545aa66d8489fc9f1385a7abd64282",
+  "n_recordings": 3000,
+  "seed": 42,
+  "torch_version": "2.4.1",
+  "methods": {
+    "svc": "13 MFCC coefficients, interpolated to32 frames; fold-local scaler and RBF SVC; C in [1,10,100] by inner leave-one-speaker-out CV.",
+    "cnn": "26 log-mel bands, interpolated to64 frames, clip scalar mean subtraction; 3-block 2D CNN; AdamW lr=.001 weight_decay=.001 dropout=.2 batch64. One inner speaker selects epochs (1..30), then refit on all5 training voices."
+  },
+  "training": "Clean audio only; no noise augmentation; CNN scaling fitted on training clips only.",
+  "development_note": "Exploratory follow-up after inspecting baseline scores. Outer test voices never select hyperparameters/checkpoints; this reused dataset is not a fresh final test.",
+  "cnn_reference": "https://es.mathworks.com/help/signal/ug/spoken-digit-recognition-with-custom-log-spectrogram-layer-and-deep-learning.html",
+  "reference_note": "Independent PyTorch implementation of the log-spectrogram CNN idea. Features and architecture differ; not an exact reproduction.",
+  "recording_split_known_speakers": {
+    "svc": {
+      "accuracy": 0.9933333333333333,
+      "macro_f1": 0.9933314809669351
+    },
+    "cnn": {
+      "accuracy": 0.99,
+      "macro_f1": 0.9900501035233802
+    }
+  },
+  "leave_one_speaker_out": {
+    "clean_svc": {
+      "accuracy": 0.7826666666666666,
+      "macro_f1": 0.7900239507174408
+    },
+    "clean_cnn": {
+      "accuracy": 0.741,
+      "macro_f1": 0.753697070730583
+    },
+    "10dB_svc": {
+      "accuracy": 0.3536666666666667,
+      "macro_f1": 0.33190372753585107
+    },
+    "10dB_cnn": {
+      "accuracy": 0.262,
+      "macro_f1": 0.1992274284067545
+    },
+    "0dB_svc": {
+      "accuracy": 0.16633333333333333,
+      "macro_f1": 0.08397876989147139
+    },
+    "0dB_cnn": {
+      "accuracy": 0.16,
+      "macro_f1": 0.07417463344686884
+    }
+  },
+  "folds": [
+    {
+      "held_out_speaker": "george",
+      "n_train": 2500,
+      "n_test": 500,
+      "svc_C": 10,
+      "svc_inner_accuracy": 0.8368,
+      "cnn_validation_speaker": "jackson",
+      "cnn_selected_epochs": 30,
+      "inner_speakers": [
+        "lucas",
+        "nicolas",
+        "theo",
+        "yweweler"
+      ],
+      "train_speakers": [
+        "jackson",
+        "lucas",
+        "nicolas",
+        "theo",
+        "yweweler"
+      ],
+      "clean_svc": {
+        "accuracy": 0.532,
+        "macro_f1": 0.5582345789706638
+      },
+      "clean_cnn": {
+        "accuracy": 0.546,
+        "macro_f1": 0.5239398368006605
+      },
+      "10dB_svc": {
+        "accuracy": 0.196,
+        "macro_f1": 0.1244699276330922
+      },
+      "10dB_cnn": {
+        "accuracy": 0.148,
+        "macro_f1": 0.06481104322244852
+      },
+      "0dB_svc": {
+        "accuracy": 0.138,
+        "macro_f1": 0.06512549229801216
+      },
+      "0dB_cnn": {
+        "accuracy": 0.1,
+        "macro_f1": 0.01818181818181818
+      }
+    },
+    {
+      "held_out_speaker": "jackson",
+      "n_train": 2500,
+      "n_test": 500,
+      "svc_C": 1,
+      "svc_inner_accuracy": 0.7504000000000001,
+      "cnn_validation_speaker": "lucas",
+      "cnn_selected_epochs": 14,
+      "inner_speakers": [
+        "george",
+        "nicolas",
+        "theo",
+        "yweweler"
+      ],
+      "train_speakers": [
+        "george",
+        "lucas",
+        "nicolas",
+        "theo",
+        "yweweler"
+      ],
+      "clean_svc": {
+        "accuracy": 0.902,
+        "macro_f1": 0.884103683906033
+      },
+      "clean_cnn": {
+        "accuracy": 0.82,
+        "macro_f1": 0.8009122431162705
+      },
+      "10dB_svc": {
+        "accuracy": 0.456,
+        "macro_f1": 0.4359450584038454
+      },
+      "10dB_cnn": {
+        "accuracy": 0.384,
+        "macro_f1": 0.33872355667424453
+      },
+      "0dB_svc": {
+        "accuracy": 0.176,
+        "macro_f1": 0.09402932274674738
+      },
+      "0dB_cnn": {
+        "accuracy": 0.156,
+        "macro_f1": 0.09007993391481814
+      }
+    },
+    {
+      "held_out_speaker": "lucas",
+      "n_train": 2500,
+      "n_test": 500,
+      "svc_C": 1,
+      "svc_inner_accuracy": 0.7696000000000001,
+      "cnn_validation_speaker": "nicolas",
+      "cnn_selected_epochs": 6,
+      "inner_speakers": [
+        "george",
+        "jackson",
+        "theo",
+        "yweweler"
+      ],
+      "train_speakers": [
+        "george",
+        "jackson",
+        "nicolas",
+        "theo",
+        "yweweler"
+      ],
+      "clean_svc": {
+        "accuracy": 0.742,
+        "macro_f1": 0.7335653592093674
+      },
+      "clean_cnn": {
+        "accuracy": 0.54,
+        "macro_f1": 0.5390087638363501
+      },
+      "10dB_svc": {
+        "accuracy": 0.216,
+        "macro_f1": 0.10707031916709338
+      },
+      "10dB_cnn": {
+        "accuracy": 0.186,
+        "macro_f1": 0.09592850600255937
+      },
+      "0dB_svc": {
+        "accuracy": 0.17,
+        "macro_f1": 0.06997163719751373
+      },
+      "0dB_cnn": {
+        "accuracy": 0.162,
+        "macro_f1": 0.06538307507470502
+      }
+    },
+    {
+      "held_out_speaker": "nicolas",
+      "n_train": 2500,
+      "n_test": 500,
+      "svc_C": 100,
+      "svc_inner_accuracy": 0.7991999999999999,
+      "cnn_validation_speaker": "theo",
+      "cnn_selected_epochs": 26,
+      "inner_speakers": [
+        "george",
+        "jackson",
+        "lucas",
+        "yweweler"
+      ],
+      "train_speakers": [
+        "george",
+        "jackson",
+        "lucas",
+        "theo",
+        "yweweler"
+      ],
+      "clean_svc": {
+        "accuracy": 0.68,
+        "macro_f1": 0.6765071368712269
+      },
+      "clean_cnn": {
+        "accuracy": 0.762,
+        "macro_f1": 0.7501535621690729
+      },
+      "10dB_svc": {
+        "accuracy": 0.376,
+        "macro_f1": 0.3332871654612655
+      },
+      "10dB_cnn": {
+        "accuracy": 0.2,
+        "macro_f1": 0.0756012009215305
+      },
+      "0dB_svc": {
+        "accuracy": 0.194,
+        "macro_f1": 0.0880556943056943
+      },
+      "0dB_cnn": {
+        "accuracy": 0.188,
+        "macro_f1": 0.0856364768129474
+      }
+    },
+    {
+      "held_out_speaker": "theo",
+      "n_train": 2500,
+      "n_test": 500,
+      "svc_C": 100,
+      "svc_inner_accuracy": 0.7100000000000001,
+      "cnn_validation_speaker": "yweweler",
+      "cnn_selected_epochs": 9,
+      "inner_speakers": [
+        "george",
+        "jackson",
+        "lucas",
+        "nicolas"
+      ],
+      "train_speakers": [
+        "george",
+        "jackson",
+        "lucas",
+        "nicolas",
+        "yweweler"
+      ],
+      "clean_svc": {
+        "accuracy": 0.94,
+        "macro_f1": 0.9416533224579113
+      },
+      "clean_cnn": {
+        "accuracy": 0.908,
+        "macro_f1": 0.900454644929318
+      },
+      "10dB_svc": {
+        "accuracy": 0.494,
+        "macro_f1": 0.4647125212556551
+      },
+      "10dB_cnn": {
+        "accuracy": 0.38,
+        "macro_f1": 0.32206617663863835
+      },
+      "0dB_svc": {
+        "accuracy": 0.208,
+        "macro_f1": 0.1278601465640022
+      },
+      "0dB_cnn": {
+        "accuracy": 0.18,
+        "macro_f1": 0.1
+      }
+    },
+    {
+      "held_out_speaker": "yweweler",
+      "n_train": 2500,
+      "n_test": 500,
+      "svc_C": 1,
+      "svc_inner_accuracy": 0.7344,
+      "cnn_validation_speaker": "george",
+      "cnn_selected_epochs": 20,
+      "inner_speakers": [
+        "jackson",
+        "lucas",
+        "nicolas",
+        "theo"
+      ],
+      "train_speakers": [
+        "george",
+        "jackson",
+        "lucas",
+        "nicolas",
+        "theo"
+      ],
+      "clean_svc": {
+        "accuracy": 0.9,
+        "macro_f1": 0.8927670560172629
+      },
+      "clean_cnn": {
+        "accuracy": 0.87,
+        "macro_f1": 0.8594805406104499
+      },
+      "10dB_svc": {
+        "accuracy": 0.384,
+        "macro_f1": 0.3531421431998239
+      },
+      "10dB_cnn": {
+        "accuracy": 0.274,
+        "macro_f1": 0.19487457944130576
+      },
+      "0dB_svc": {
+        "accuracy": 0.112,
+        "macro_f1": 0.03890895929063868
+      },
+      "0dB_cnn": {
+        "accuracy": 0.174,
+        "macro_f1": 0.0685100625739895
+      }
+    }
+  ]
+}
